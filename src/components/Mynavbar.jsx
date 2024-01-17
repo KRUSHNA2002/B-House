@@ -3,9 +3,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {NavLink} from 'react-router-dom';
+import {NavLink ,Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 const Mynavbar=()=>{
@@ -17,21 +17,18 @@ const Mynavbar=()=>{
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="m-auto">
-              <NavLink className='nav-link' to="/"><i className='fa fa-home'></i>  Home</NavLink>
-              <NavLink className='nav-link' to="/about"><i className='fa fa-file'></i>  About</NavLink>
-              <NavLink className='nav-link' to="/about"><i class="fas fa-hamburger"></i>  Orders </NavLink>
-              <NavLink className='nav-link' to="/about"><i className='fa fa-phone'></i>  Contact</NavLink>
-              {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown> */}
+              <NavLink className='nav-link mx-3' to="/"><i className='fa fa-home'></i>  Home</NavLink>
+              {/* <NavLink className='nav-link' to="/menus"><i className='fa fa-file'></i>  Menus</NavLink> */}
+              {/* <NavLink className='nav-link' to="/about"><i class="fas fa-hamburger"></i>  Orders </NavLink> */}
+              
+              <NavDropdown title="Menus" className='mx-3 ' id="basic-nav-dropdown">
+
+                <Link className='nav-link menusdrop' to='/veg'>Veg Items</Link>
+                <Link className='nav-link menusdrop' to='/nonveg'>Non-Veg Items</Link>
+
+              </NavDropdown>
+              
+              <NavLink className='nav-link mx-3' to="/contact"><i className='fa fa-phone'></i>  Contact</NavLink>
              
 
 

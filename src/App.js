@@ -7,7 +7,10 @@ import Mynavbar from './components/Mynavbar';
 // Component
 
 import Home from './components/Home';
-import About from './components/About';
+import Menus from './components/Menus';
+import Veg from './components/Veg';
+import Nonveg from './components/Nonveg';
+import Order from './components/Order';
 
 const App=()=> {
   return (
@@ -16,7 +19,10 @@ const App=()=> {
       <Mynavbar/>
        <Routes>
           <Route path='/' element={<Home/>}>Home</Route>
-          <Route path='/about' element={<About/>}>About</Route>
+          {/* <Route path='/menus' element={<Menus/>}>Menus</Route> */}
+          <Route path='veg' element={<Veg/>}>About</Route>
+          <Route path='nonveg' element={<Nonveg/>}>About</Route>
+          <Route path='/order/:id' element={<Order/>}>About</Route>
        </Routes>
      </Router>
 </>
