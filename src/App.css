@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+/* ************************************************** Navbar ********************************************************** */
+
+
+
+.navbarcolor
+{
+   background-color: rgb(139, 123, 123);
+}
+
+#basic-nav-dropdown
+{
+  color:white;
+}
+
+.bgcontact
+{
+  height: 500px;
+  width: 100%;
+  background-image: url('https://www.posist.com/restaurant-times/wp-content/uploads/2017/11/Effective-Strategies-To-Improve-Your-Restaurant-Service-And-Provide-A-Stellar-Guest-Experience.jpg');
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  opacity: 0.8;
+}

@@ -3,19 +3,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 import Mynavbar from './components/Mynavbar';
 
-
 // Component
 
 import Home from './components/Home';
-import Menus from './components/Menus';
+// import Menus from './components/Menus';
 import Veg from './components/Veg';
 import Nonveg from './components/Nonveg';
 import Order from './components/Order';
+import { createContext } from 'react';
+
+const data= createContext();
 
 const App=()=> {
+ 
+  const apiKey = '901a78a62228490c93e9cfb31708d4ea';
+
   return (
 <>
-    <Router>
+     <data.Provider value={apiKey}>
+          <Router>
       <Mynavbar/>
        <Routes>
           <Route path='/' element={<Home/>}>Home</Route>
@@ -25,6 +31,7 @@ const App=()=> {
           <Route path='/order/:id' element={<Order/>}>About</Route>
        </Routes>
      </Router>
+     </data.Provider>
 </>
   );
 }
