@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import ShortInfo from './ShortInfo';
 
 // import { useContext } from 'react';
 
@@ -15,9 +16,17 @@ const Home = (props) => {
   const apiKey = '901a78a62228490c93e9cfb31708d4ea';
   const [five, setfirstfive] = useState([]);
 
+  const [count , setcount]=useState(0);
+
+const decrement=()=>{
+
+  if(count>0)
+  {
+    setcount(count-1);
+  }
+}
+
   const getData = async () => {
-
-
     try {
       const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=5`;
       console.log('API URL:', apiUrl);
@@ -110,12 +119,70 @@ const Home = (props) => {
       <div className="container-fluid">
           <div className="row bgcontact">
 
-               <div className="col-md-12 text-center my-5">
-               <h1 style={{fontFamily: 'Satisfy',color:'Yellow' , textShadow: '2px 2px 4px'}}>BOOK A TABLE</h1>
-               <h3 style={{color:'black'}}>Reservation</h3>
-               </div>
+                    <div className="col-md-12 col-12 text-center my-5">
+                        <h1 style={{fontFamily: 'Satisfy',color:'black' , textShadow: '2px 2px 4px' ,fontSize:'30px'}}>BOOK A TABLE</h1>
+                        <h3 style={{color:'black',fontSize:'60px'}}>Reservation</h3>
+
+                      <div className="row d-flex justify-content-center align-items-center p-3 bginput">
+                        <div className="col-md-5 my-3">
+                          <input type="text" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Enter your Name' />
+                        </div>
+
+                        <div className="col-md-5 my-3 ">
+                          <input type="text" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Enter your Email' />
+                        </div>
+
+                        <div className="col-md-5 my-2">
+                          <input type="text" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}} placeholder='Enter your Mobile' />
+                        </div>
+
+                        <div className="col-md-5 my-2 ">
+                          <input type="text" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Enter your orders / Menus' />
+                        </div>
+
+                        {/* <div className="col-md-5 my-2  d-flex justify-content-center align-items-center">
+                          <button className='mx-2 btn btn-primary' onClick={()=>setcount(count+1)}>+ </button>
+                          <h6> Select QTY : {count}</h6>
+                          <button className='mx-2 btn btn-danger' onClick={decrement}> -</button>
+                        </div> */}
+
+
+                        <div className="col-md-5 my-2  d-flex justify-content-center align-items-center">
+                           <select name="" id="" className='form-control text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}} >
+                               <option value="" className=''>Select Your Quantity</option>
+                              <option value="">One</option>
+                              <option value="">Two</option>
+                              <option value="">Three</option>
+                              <option value="">Four</option>
+                              <option value="">Five + </option>
+                           </select>
+                        </div>
+
+                        <div className="col-md-5 my-2">
+                           <div className="row">
+                           <div className="col-md-6">
+                         <input type="date" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Choose Your Date' />
+                         </div>
+                         <div className="col-md-6">
+                         <input type="time" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Choose Your Time' />
+                         </div>
+                           </div>
+                        </div>
+
+                        <div className="col-md-10 my-2" >
+                          <textarea rows="4" type="text" className='form-control my-1 text-center' style={{border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Enter your Message'></textarea>
+                        </div>
+
+                        <div className="col-md-5 my-2 text-center my-5">
+                          <button className='btn btn-primary'>Book Table</button>
+                        </div>
+
+                      </div>
+                    </div>
           </div>
       </div>
+
+      <ShortInfo/>
     </>
   )
 }
