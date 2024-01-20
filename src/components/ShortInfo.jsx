@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const ShortInfo = () => {
+
+  const [ref, inView] = useInView({
+    triggerOnce: true, 
+  });
+
   return (
 <>
 
          <div className="container ">
-            <div className="row shortinfoanimation">
+            <div ref={ref} className={`container shortinfoanimation ${inView ? 'visible' : ''}`}>
                 <div className="col-md-12 text-center my-5">
                     <h1 className='' style={{fontFamily:'Satisfy' ,fontSize:'40px'}}>Short Info</h1>
                     <h4 className='' style={{fontFamily:'cursive',fontSize:'60px'}}>Get In Touch</h4>

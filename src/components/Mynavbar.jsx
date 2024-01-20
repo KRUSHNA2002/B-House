@@ -6,9 +6,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import {NavLink ,Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { GoogleLogin } from 'react-google-login';
 
 const Mynavbar=()=>{
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
     return(
 <>
         <Navbar expand="lg" className="navbarcolor ">
@@ -39,6 +43,15 @@ const Mynavbar=()=>{
             <div className=''>
             <Button variant="outline-white">SignUp</Button>{' '}
             <Button variant="outline-white">Resister</Button>{' '}
+
+            <GoogleLogin
+                clientId="YOUR_GOOGLE_CLIENT_ID"
+                buttonText="Login with Google"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+              />
+              
              </div>
      
           </Navbar.Collapse>

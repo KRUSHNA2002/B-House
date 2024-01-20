@@ -24,13 +24,13 @@ const Nonveg = () => {
   }, []);
 
   return (
-    <div className="container ">
+    <div className="container-fluid bg-dark">
        <div className="row ">
        {
         value.map((val , i)=>{
             return(
 
-                <div className="col-md-4 my-4 mx-auto d-flex justify-content-center align-items-center">
+                <div className="col-md-4 my-5 mx-auto d-flex justify-content-center align-items-center">
                         <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={val.image} />
                         <Card.Body>

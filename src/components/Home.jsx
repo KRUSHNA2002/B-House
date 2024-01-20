@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import ShortInfo from './ShortInfo';
+import { useInView } from 'react-intersection-observer';
 
 // import { useContext } from 'react';
 
@@ -11,6 +12,9 @@ import ShortInfo from './ShortInfo';
 
 const Home = (props) => {
 
+  const [ref, inView] = useInView({
+    triggerOnce: true, 
+  });
   //  const apikey=useContext(data);
 
   const apiKey = '901a78a62228490c93e9cfb31708d4ea';
@@ -51,7 +55,7 @@ const decrement=()=>{
       <Carousel data-bs-theme="dark">
         <Carousel.Item>
           <img
-            className="d-block" height={'500px'} width={"100%"}
+            className="d-block" height={'550px'} width={"100%"}
             src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/af/e2/a4/decouvrez-notre-carte.jpg?w=1200&h=-1&s=1"
             alt="First slide"
           />
@@ -62,9 +66,8 @@ const decrement=()=>{
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block" height={'500px'} width={"100%"}
+            className="d-block" height={'550px'} width={"100%"}
             src="https://assets.architecturaldigest.in/photos/64f84cc61d4896b633fba77a/master/w_1600%2Cc_limit/The%2520art%2520deco%2520inspired%2520de%25CC%2581cor%2520of%2520CIRQA%25201960%2520.jpg"
-            alt="Second slide"
           />
           <Carousel.Caption className='text-white'>
             <h1 style={{fontSize:"50px"}}>QUALITY FOOD</h1>
@@ -73,7 +76,7 @@ const decrement=()=>{
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block" height={'500px'} width={'100%'}
+            className="d-block" height={'550px'} width={'100%'}
             src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/fe/db/b1/ministry-of-food.jpg?w=1200&h=-1&s=1"
             alt="Third slide"
           />
@@ -84,17 +87,20 @@ const decrement=()=>{
         </Carousel.Item>
       </Carousel>
 
-      <div className="container ">
+    <div className='emptydiv'>
+    </div>
 
-        <div className="row ">
-          <div className='text-muted text-center my-5'>
+      <div className="container-fluid bgimagecard ">
+
+        <div className="row  ">
+          <div className='text-white text-center my-5'>
             <h1>Special Items</h1>
           </div>
           {
             five.map((val, i) => {
               return (
 
-                <div className="col-md-4 my-4 mx-auto d-flex justify-content-center align-items-center">
+                <div ref={ref} className={`cardhome col-md-4 my-4 mx-auto d-flex justify-content-center align-items-center container shortinfoanimation ${inView ? 'visible' : ''} `}>
                   <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" src={val.image} />
                     <Card.Body>
@@ -115,29 +121,30 @@ const decrement=()=>{
           }
         </div>
       </div>
-
+<div className='emptydiv1'></div>
       <div className="container-fluid">
           <div className="row bgcontact">
 
-                    <div className="col-md-12 col-12 text-center my-5">
-                        <h1 style={{fontFamily: 'Satisfy',color:'black' , textShadow: '2px 2px 4px' ,fontSize:'30px'}}>BOOK A TABLE</h1>
-                        <h3 style={{color:'black',fontSize:'60px'}}>Reservation</h3>
+            <form action="" method='post'>
+            <div className="col-md-12 col-12 text-center " style={{marginTop:"150px"}}>
+                        <h1 style={{fontFamily: 'Satisfy',color:'White' , textShadow: '2px 2px 4px black' ,fontSize:'30px'}}>BOOK A TABLE</h1>
+                        <h3 style={{color:'White',fontSize:'60px' ,textShadow: '2px 2px 4px black'}}>Reservation</h3>
 
                       <div className="row d-flex justify-content-center align-items-center p-3 bginput">
                         <div className="col-md-5 my-3">
-                          <input type="text" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Enter your Name' />
+                          <input type="text" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Name' />
                         </div>
 
                         <div className="col-md-5 my-3 ">
-                          <input type="text" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Enter your Email' />
+                          <input type="text" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Email' />
                         </div>
 
                         <div className="col-md-5 my-2">
-                          <input type="text" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}} placeholder='Enter your Mobile' />
+                          <input type="text" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}} placeholder='Enter your Mobile' />
                         </div>
 
                         <div className="col-md-5 my-2 ">
-                          <input type="text" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Enter your orders / Menus' />
+                          <input type="text" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your orders / Menus' />
                         </div>
 
                         {/* <div className="col-md-5 my-2  d-flex justify-content-center align-items-center">
@@ -148,7 +155,7 @@ const decrement=()=>{
 
 
                         <div className="col-md-5 my-2  d-flex justify-content-center align-items-center">
-                           <select name="" id="" className='form-control text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}} >
+                           <select name="" id="" className='form-control ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}} >
                                <option value="" className=''>Select Your Quantity</option>
                               <option value="">One</option>
                               <option value="">Two</option>
@@ -161,24 +168,25 @@ const decrement=()=>{
                         <div className="col-md-5 my-2">
                            <div className="row">
                            <div className="col-md-6">
-                         <input type="date" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Choose Your Date' />
+                         <input type="date" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Choose Your Date' />
                          </div>
                          <div className="col-md-6">
-                         <input type="time" className='form-control my-1 text-center' style={{height:"55px",border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Choose Your Time' />
+                         <input type="time" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Choose Your Time' />
                          </div>
                            </div>
                         </div>
 
                         <div className="col-md-10 my-2" >
-                          <textarea rows="4" type="text" className='form-control my-1 text-center' style={{border:'1px solid black inset' , boxShadow:'0px 0px 10px 2px inset'}}  placeholder='Enter your Message'></textarea>
+                          <textarea rows="4" type="text" className='form-control my-1 ' style={{border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Message'></textarea>
                         </div>
 
-                        <div className="col-md-5 my-2 text-center my-5">
-                          <button className='btn btn-primary'>Book Table</button>
+                        <div className="col-md-5 my-2  my-5">
+                          <button type='submit' className='btn btn-primary'>Book Table</button>
                         </div>
 
                       </div>
                     </div>
+            </form>
           </div>
       </div>
 
