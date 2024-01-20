@@ -79,3 +79,20 @@
   color:black;
   height:'35px';
 }
+
+
+.shortinfoanimation {
+  position: relative;
+  animation-name: zoomOut;
+  animation-duration: 1s; 
+  animation-timing-function: ease-out;
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

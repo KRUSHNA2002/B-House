@@ -4,14 +4,14 @@ const ShortInfo = () => {
   return (
 <>
 
-         <div className="container">
-            <div className="row">
+         <div className="container ">
+            <div className="row shortinfoanimation">
                 <div className="col-md-12 text-center my-5">
                     <h1 className='' style={{fontFamily:'Satisfy' ,fontSize:'40px'}}>Short Info</h1>
                     <h4 className='' style={{fontFamily:'cursive',fontSize:'60px'}}>Get In Touch</h4>
                 </div>
                 
-                <div className="row  d-flex justify-content-center align-items-center ">
+                <div className="row  d-flex justify-content-center align-items-center  ">
                     
                         <div className='col-md-6  ' style={{height:'400px'}}>
                             <div className="col-md-12">
@@ -62,4 +62,4 @@ const ShortInfo = () => {
   )
 }
 
-export default ShortInfo
+export default ShortInfo;
