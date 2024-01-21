@@ -12,6 +12,43 @@ import { useInView } from 'react-intersection-observer';
 
 const Home = (props) => {
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    quantity: '',
+    date: '',
+    time: '',
+    message: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Save form data to localStorage
+    const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+    reservations.push(formData);
+    localStorage.setItem('reservations', JSON.stringify(reservations));
+
+    // Optionally, you can clear the form fields after submission
+    setFormData({
+      name: '',
+      email: '',
+      mobile: '',
+      quantity: '',
+      date: '',
+      time: '',
+      msg: '',
+    });
+  };
   const [ref, inView] = useInView({
     triggerOnce: true, 
   });
@@ -20,15 +57,15 @@ const Home = (props) => {
   const apiKey = '901a78a62228490c93e9cfb31708d4ea';
   const [five, setfirstfive] = useState([]);
 
-  const [count , setcount]=useState(0);
+  // const [count , setcount]=useState(0);
 
-const decrement=()=>{
+// const decrement=()=>{
 
-  if(count>0)
-  {
-    setcount(count-1);
-  }
-}
+//   if(count>0)
+//   {
+//     setcount(count-1);
+//   }
+// }
 
   const getData = async () => {
     try {
@@ -52,7 +89,7 @@ const decrement=()=>{
   }, [])
   return (
     <>
-      <Carousel data-bs-theme="dark">
+      <Carousel data-bs-theme="white">
         <Carousel.Item>
           <img
             className="d-block" height={'550px'} width={"100%"}
@@ -125,27 +162,28 @@ const decrement=()=>{
       <div className="container-fluid">
           <div className="row bgcontact">
 
-            <form action="" method='post'>
+            <form onSubmit={handleSubmit}>
             <div className="col-md-12 col-12 text-center " style={{marginTop:"150px"}}>
                         <h1 style={{fontFamily: 'Satisfy',color:'White' , textShadow: '2px 2px 4px black' ,fontSize:'30px'}}>BOOK A TABLE</h1>
                         <h3 style={{color:'White',fontSize:'60px' ,textShadow: '2px 2px 4px black'}}>Reservation</h3>
 
                       <div className="row d-flex justify-content-center align-items-center p-3 bginput">
                         <div className="col-md-5 my-3">
-                          <input type="text" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Name' />
+                          <input type="text" required className='form-control my-1 ' name='name' value={formData.name} onChange={handleInputChange} style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Name' />
                         </div>
 
                         <div className="col-md-5 my-3 ">
-                          <input type="text" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Email' />
+                          <input type="text" required className='form-control my-1 ' name='email' value={formData.email} onChange={handleInputChange} style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Email' />
                         </div>
 
                         <div className="col-md-5 my-2">
-                          <input type="text" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}} placeholder='Enter your Mobile' />
+                          <input type="text" required className='form-control my-1 ' name='mobile' value={formData.mobile} onChange={handleInputChange} style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}} placeholder='Enter your Mobile' />
                         </div>
 
                         <div className="col-md-5 my-2 ">
-                          <input type="text" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your orders / Menus' />
+                          <input type="text" required className='form-control my-1 ' name='menus' value={formData.menus} onChange={handleInputChange} style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your orders / Menus' />
                         </div>
+
 
                         {/* <div className="col-md-5 my-2  d-flex justify-content-center align-items-center">
                           <button className='mx-2 btn btn-primary' onClick={()=>setcount(count+1)}>+ </button>
@@ -155,29 +193,22 @@ const decrement=()=>{
 
 
                         <div className="col-md-5 my-2  d-flex justify-content-center align-items-center">
-                           <select name="" id="" className='form-control ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}} >
-                               <option value="" className=''>Select Your Quantity</option>
-                              <option value="">One</option>
-                              <option value="">Two</option>
-                              <option value="">Three</option>
-                              <option value="">Four</option>
-                              <option value="">Five + </option>
-                           </select>
+                           <input type='number' required name="quantity" id="quantity" className='form-control ' value={formData.quantity} onChange={handleInputChange} style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset' }} placeholder="Enter Your Quantity" />
                         </div>
 
                         <div className="col-md-5 my-2">
                            <div className="row">
                            <div className="col-md-6">
-                         <input type="date" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Choose Your Date' />
+                         <input type="date" required className='form-control my-1 ' name='date' value={formData.date} onChange={handleInputChange} style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Choose Your Date' />
                          </div>
                          <div className="col-md-6">
-                         <input type="time" className='form-control my-1 ' style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Choose Your Time' />
+                         <input type="time" required className='form-control my-1 'name='time' value={formData.time} onChange={handleInputChange} style={{height:"45px",border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Choose Your Time' />
                          </div>
                            </div>
                         </div>
 
                         <div className="col-md-10 my-2" >
-                          <textarea rows="4" type="text" className='form-control my-1 ' style={{border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Message'></textarea>
+                          <textarea rows="4" required type="text" className='form-control my-1 ' name='msg' value={formData.msg} onChange={handleInputChange} style={{border:'1px solid black inset' , boxShadow:'0px 0px 0px px inset'}}  placeholder='Enter your Message'></textarea>
                         </div>
 
                         <div className="col-md-5 my-2  my-5">

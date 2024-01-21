@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Order = () => {
   const { id } = useParams();
@@ -7,8 +8,10 @@ const Order = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartitem , setcartItem]=useState("Order Now");
+  const [buttonloading , setbuttonloading]=useState(true);
 
-  const [count , setcount]=useState(0);
+  const [count , setcount]=useState(1);
 
   const getData = async () => {
     try {
@@ -42,6 +45,20 @@ const Order = () => {
         setcount(count-1);
     }
   }
+
+  const price=count*200;
+  const disc=(20/100)*price;
+  const totalprice=price-disc;
+  
+  
+
+  const addcart=()=>{
+
+    setcartItem("added to cart");
+    setbuttonloading(true);
+
+  }
+
   return (
     <div className="container my-4" style={{ boxShadow: '0px 0px 10px 5px inset' }}>
       <div className="row">
@@ -65,10 +82,14 @@ const Order = () => {
 
               </div>
 
-              <h3 className='my-4'>Price : &#8377; 3000</h3>
+              <h3 className='my-4'>Price : &#8377; {totalprice}</h3>
               <h6><span className='text-success'>Discount : 20%</span></h6>
 
-              <button className='btn btn-dark my-4'>Order Now</button>
+              <div className="row">
+                
+              <button className='btn btn-dark my-4' onClick={addcart} disabled={buttonloading} >{cartitem} </button>
+               <Link className='nav-link' to='/'>  <button className='btn btn-dark my-4 mx-2'>Menues</button></Link>  
+              </div> 
             </>
           )}
         </div>

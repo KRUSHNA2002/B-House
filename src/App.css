@@ -64,7 +64,7 @@
 @media screen and (max-width: 600px) {
   .bgcontact
     {
-      height: 950px;
+      height: 1050px;
       width: 100%;
       background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D');
       background-attachment: fixed;
@@ -132,3 +132,18 @@
    z-index: 999 !important;
    background-image: linear-gradient(to bottom ,rgb(52,26,31), rgba(243, 239, 239, 0));
 }
+
+
+@media screen and (max-width:600px) {
+  
+  .bgimagecard
+{
+  height: 2550px;
+  width: "100%";
+  background-image: url("./images/restarant1.jpg");
+  background-size: 100% 100%;
+  opacity: 0.9;
+}
+
+}
+
