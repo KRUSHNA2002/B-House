@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import ShortInfo from './ShortInfo';
 import { useInView } from 'react-intersection-observer';
+import Footer from './Footer';
 
 // import { useContext } from 'react';
 
@@ -222,6 +223,7 @@ const Home = (props) => {
       </div>
 
       <ShortInfo/>
+      <Footer/>
     </>
   )
 }

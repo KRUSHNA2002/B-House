@@ -10,7 +10,7 @@ const ShortInfo = () => {
   return (
 <>
 
-         <div className="container ">
+         <div className="container">
             <div ref={ref} className={`container shortinfoanimation ${inView ? 'visible' : ''}`}>
                 <div className="col-md-12 text-center my-5">
                     <h1 className='' style={{fontFamily:'Satisfy' ,fontSize:'40px'}}>Short Info</h1>

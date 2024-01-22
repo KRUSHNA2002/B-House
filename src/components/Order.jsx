@@ -9,7 +9,7 @@ const Order = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cartitem , setcartItem]=useState("Order Now");
-  const [buttonloading , setbuttonloading]=useState(true);
+  const [buttonloading , setbuttonloading]=useState();
 
   const [count , setcount]=useState(1);
 
@@ -54,8 +54,20 @@ const Order = () => {
 
   const addcart=()=>{
 
+      try {
+
+    setbuttonloading(false);
+
     setcartItem("added to cart");
+
+  } catch (error) {
+    console.log("Error");
+
+  } finally {
+
     setbuttonloading(true);
+  }
+
 
   }
 
@@ -67,31 +79,38 @@ const Order = () => {
             <img src={`https://spoonacular.com/recipeImages/${id}-312x231.jpg`} alt="" style={{ width: '100%', height: '400px' }} />
           )}
         </div>
-        <div className="col-md-5 col-12 " style={{padding:'70px'}}>
-          {data && (
+        <div className="col-md-5 col-sm-12 text-center" style={{padding:'40px'}}>
+           <div className="row">
+            {data && (
             <>
-              <h4>{data.title}</h4>
 
-              <div className='d-flex mx-2 my-4'>
+             <div className="col-md-12">
+                <h4>{data.title}</h4>
+             </div>
+              
                
-               <button className='btn border-success ' onClick={decrement}> - </button>
-                  
-                  <h6 className='mx-2 my-2'>Qty : {count}</h6>
+                  <button className='btn border-success ' onClick={decrement}> - </button>
+                      
+                      <h6 className='mx-2 my-2'>Qty : {count}</h6>
 
-               <button className='btn border-success ' onClick={()=>setcount(count+1)}>+</button>
+                  <button className='btn border-success ' onClick={()=>setcount(count+1)}>+</button>
 
+             
+
+                    <h3 className='my-4'>Price : &#8377; {totalprice}</h3>
+                    <h6><span className='text-success'>Discount : 20%</span></h6>
+
+              
+              <div className="col-md-12">
+                <button className='btn btn-dark my-4 w-100' onClick={()=>addcart()} disabled={buttonloading} >{cartitem} </button>
               </div>
 
-              <h3 className='my-4'>Price : &#8377; {totalprice}</h3>
-              <h6><span className='text-success'>Discount : 20%</span></h6>
-
-              <div className="row">
-                
-              <button className='btn btn-dark my-4' onClick={addcart} disabled={buttonloading} >{cartitem} </button>
-               <Link className='nav-link' to='/'>  <button className='btn btn-dark my-4 mx-2'>Menues</button></Link>  
-              </div> 
+              <div className="col-md-12">
+                  <Link className='nav-link ' to='/'>  <button className=' w-100 btn btn-dark my-4 mx-2'>Menues</button></Link>  
+                </div>           
             </>
-          )}
+           )}
+           </div>
         </div>
       </div>
     </div>

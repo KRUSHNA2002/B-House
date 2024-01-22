@@ -12,7 +12,7 @@ const Mynavbar=()=>{
  
     return(
 <>
-        <Navbar expand="lg" className="navbarcolor ">
+        <Navbar expand="lg" className="navbarcolor" style={{height:'60px' , position:'relative'}} fixed="top">
         <Container>
           <NavLink className='nav-link text-bold' to="/"><span className='text-white' style={{fontSize:'24px'}}>Brand House</span></NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -40,7 +40,7 @@ const Mynavbar=()=>{
             </Nav>
             <div className=''>
             <Button variant="outline-white">SignUp</Button>{' '}
-            <Button variant="outline-white">Resister</Button>{' '}
+            <Button variant="outline-white">Register</Button>{' '}
 
               
              </div>
