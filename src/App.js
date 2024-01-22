@@ -13,6 +13,7 @@ import Order from './components/Order';
 import { createContext } from 'react';
 import Reservation from './components/admin/Reservation';
 import Contact from './components/Contact';
+import Cart from './components/Cart';
 const data= createContext();
 
 const App=()=> {
@@ -31,6 +32,7 @@ const App=()=> {
           <Route path='nonveg' element={<Nonveg/>}>About</Route>
           <Route path='contact' element={<Contact/>}>About</Route>
           <Route path='/order/:id' element={<Order/>}>About</Route>
+          <Route path='/cart/:id' element={<Cart/>}>Cart</Route>
           <Route path='admin/reservation' element={<Reservation/>}>About</Route>
        </Routes>
      </Router>

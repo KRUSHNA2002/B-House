@@ -33,6 +33,7 @@ const Mynavbar=()=>{
             </div>
               
               <NavLink className='nav-link mx-3 text-white' to="/contact"><i className='fa fa-phone'></i> Contact</NavLink>
+              <NavLink className='nav-link mx-2 text-white' to="/cart"><i className='fa fa-shop'></i> &nbsp;Cart</NavLink>
               <NavLink className='nav-link mx-3 text-white' to="admin/reservation"></NavLink>
              
 
