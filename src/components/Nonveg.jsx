@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Nonveg = () => {
   const [value, setValue] = useState([]);
-  const apiKey = '901a78a62228490c93e9cfb31708d4ea';
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   const getData = async () => {
     try {
@@ -21,7 +21,7 @@ const Nonveg = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [apiKey]);
 
   return (
     <div className="container-fluid bg-dark">

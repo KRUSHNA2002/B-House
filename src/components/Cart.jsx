@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 
 const Cart = () => {
   const { id } = useParams();
-  const apiKey = '901a78a62228490c93e9cfb31708d4ea';
   const [cartData, setCartData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -21,7 +21,7 @@ const Cart = () => {
     };
 
     fetchCartData();
-  }, [id]);
+  }, [id, apiKey]);
 
   return (
     <div>
@@ -34,7 +34,7 @@ const Cart = () => {
             {Array.isArray(cartData) && cartData.length > 0 ? (
               cartData.map((item) => (
                 <li key={item.id}>
-                  {item.title} - ${item.title}
+                  {item.title} - ${item.price} {/* Assuming price is a property in your data */}
                 </li>
               ))
             ) : (

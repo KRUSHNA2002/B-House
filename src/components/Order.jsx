@@ -3,13 +3,14 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 
 const Order = () => {
   const { id } = useParams();
-  const apiKey = '901a78a62228490c93e9cfb31708d4ea';
+  const apiKey = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cartitem, setcartItem] = useState("Order Now");
   const [buttonloading, setbuttonloading] = useState();
   const [count, setcount] = useState(1);
+  
   const navigate = useNavigate();
 
   const getData = async () => {
@@ -27,7 +28,7 @@ const Order = () => {
 
   useEffect(() => {
     getData();
-  }, [id]);
+  }, [id , apiKey]);
 
   if (loading) {
     return <div>Loading...</div>;
